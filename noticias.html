@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Noticias</title>
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="imgs/icon.png" width="150" height="100" class="d-inline-block align-top" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul style="float: right;" class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.html">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sua-cidade.html">Sua cidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="botao-report">
+                            <a style="float:left;" href="denunciar.html " class="btn btn-outline-primary ">Denunciar</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <section class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Notícias</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="cidade">Cidade/estado</label>
+                            <select class="form-control" id="cidade" name="cidade" onchange="getSelected()">
+                                <option value="" >Selecione uma cidade/estado</option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                <option value="Belo Horizonte">Belo Horizonte</option>
+                                <option value="Porto Alegre">Porto Alegre</option>
+                                <option value="Curitiba">Curitiba</option>
+                                <option value="Recife">Recife</option>
+                                <option value="Manaus">Manaus</option>
+                                <option value="Salvador">Salvador</option>
+                                <option value="Fortaleza">Fortaleza</option>
+                                <option value="Brasília">Brasília</option>
+                                <option value="Belém">Belém</option>
+                                <option value="Goiânia">Goiânia</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="São Luís">São Luís</option>
+                                <option value="Maceió">Maceió</option>
+                                <option value="Natal">Natal</option>
+                                <option value="Teresina">Teresina</option>
+                                <option value="Macapá">Macapá</option>
+                                <option value="Palmas">Palmas</option>
+                                <option value="Boa Vista">Boa Vista</option>
+                                <option value="Porto Velho">Porto Velho</option>
+                                <option value="Cuiabá">Cuiabá</option>
+                                <option value="Rio Branco">Rio Branco</option>
+                                <option value="Florianópolis">Florianópolis</option>
+                                <option value="Goiânia">Goiânia</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="São Luís">São Luís</option>
+                                <option value="Maceió">Maceió</option>
+                                <option value="Natal">Natal</option>
+                                <option value="Teresina">Teresina</option>
+                                <option value="Macapá">Macapá</option>
+                                <option value="Palmas">Palmas</option>
+                                <option value="Boa Vista">Boa Vista</option>
+                                <option value="Porto Velho">Porto Velho</option>
+                                <option value="Cuiabá">Cuiabá</option>
+                                <option value="Rio Branco">Rio Branco</option>
+                                <option value="Florianópolis">Florianópolis</option>
+                                <option value="Goiânia">Goiânia</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="São Luís">São Luís</option>
+                                <option value="Maceió">Maceió</option>
+                                <option value="Natal">Natal</option>
+                                <option value="Teresina">Teresina</option>
+                                <option value="Macapá">Macapá</option>
+                                <option value="Palmas">Palmas</option>
+                                
+
+            
+
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;" class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="imgs/noticia-sp (4).jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="titulo">São Paulo</h5>
+                                    <p class="card-text">Brasil perdeu 15% da superfície de água em 30 anos.</p>
+                                    <a href="#" class="btn btn-primary">Ver mais</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="imgs/calor2.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="titulo">São Paulo</h5>
+                                    <p class="card-text">
+                                        Como será a primavera 2021? Chuvas não vão encher reservatórios</p>
+                                    <a href="#" class="btn btn-primary">Ver mais</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="imgs/usina-de-itaipu.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="titulo">São Paulo</h5>
+                                    <p class="card-text">
+                                        Itaipu pode ajudar a restabelecer energia durante apagões no Brasil</p>
+                                    <a href="#" class="btn btn-primary">Ver mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+        <script src="./js/noticias-cidades.js"></script>
+
+    </main>
+    <footer>
+
+        <div class=" container ">
+            <div class="footer-text ">
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <p>Copyright © 2020 - Todos os direitos reservados</p>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <p>Política de privacidade | Redes sociais</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container ">
+            <div class="row ">
+                <div class="col-md-12 ">
+                    <div class="social-media ">
+                        <a href="# "><i class="fab fa-facebook-square ">Facebook</i></a>
+                        <a href="# "><i class="fab fa-instagram ">Instagram</i></a>
+                        <a href="# "><i class="fab fa-twitter-square ">Twitter</i></a>
+                        <a href="# "><i class="fab fa-youtube-square ">YouTube</i></a>
+                    </div>
+                </div>
+            </div>
+
+    </footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

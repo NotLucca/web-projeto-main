@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="index.js"></script>
+    <title>Sua cidade</title>
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="imgs/icon.png" width="150" height="100" class="d-inline-block align-top" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul style="float: right;" class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.html">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sua-cidade.html">Sua cidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="botao-report">
+                            <a style="float:left;" href="denunciar.html " class="btn btn-outline-primary ">Denunciar</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="clima-pagina">
+            <div class="container">
+                <div class="card-clima">
+                    <div class="clima-cidade">
+                        <h3 id="local"><strong></strong></h3>
+                        <div class="hora">
+                            <p><strong></strong> </p>
+                        </div>
+                    </div>
+                    <div id="icone" class="icone">
+
+                    </div>
+                    <div class="max-min">
+                        <p id="time"></p>
+                        <p id="date"></p>
+
+
+                    </div>
+                    <div class="temperatura">
+                        <h1 id="temperatura"></h1>
+
+                        <p id="descricao"></p>
+
+
+                    </div>
+
+                </div>
+                <div class="qualidade-ar">
+                    <div class="card-ar">
+                        <div class="titulo">
+                            <h1>ÍNDICE DE QUALIDADE DO AR</h1>
+                        </div>
+                        <div class="indice">
+                            <span id="indice">99%</span>
+                        </div>
+                        <div class="qualidade-titulo">
+                            <h3 id="qualidade-titulo">Indice de qualidade do ar:</h3>
+                        </div>
+                        <div class="qualidade-descricao">
+                            <p id="qualidade-descricao"></p>
+
+
+                        </div>
+                        <div class="ver-mais">
+                            <button>Ver mais</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mapa">
+                    <div class="weatherWidget"></div>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            function getWeather() {
+                let temperature = document.getElementById("temperatura"); //pega o elemento temperatura
+                let description = document.getElementById("descricao"); //pega o elemento descricao
+                let location = document.getElementById("local"); //pega o elemento local     
+
+                let api = "https://api.openweathermap.org/data/2.5/weather"; //url da api
+                let apiKey = "3d6e047f70c3bcc43ece79169ccf8746"; ///chave da api 
+
+                location.innerHTML = "Localizando..."; //escreve no elemento local "Localizando..."
+
+                navigator.geolocation.getCurrentPosition(success, error); //pega a localização do usuario
+
+                function success(position) { //função de sucesso da localização
+                    latitude = position.coords.latitude; //pega a latitude do usuario
+                    longitude = position.coords.longitude; //pega a longitude do usuario 
+
+                    let url = //monta a url da api
+                        api + //url da api
+                        "?lat=" + //latitude
+                        latitude +
+                        "&lon=" + //longitude
+                        longitude +
+                        "&appid=" + //chave da api
+                        apiKey +
+                        "&units=imperial"; //
+
+                    fetch(url) //faz a requisição da url 
+                        .then(response => response.json()) //pega a resposta da requisição e converte para json
+                        .then(data => { //pega o json e faz o que estiver dentro das chaves
+                            console.log(data); //imprime no console
+                            let temp = data.main.temp; //temperatura
+                            let desc = data.weather[0].description; //Descrição do clima
+                            let loc = data.name; //Nome da cidade
+                            let celsius = ((temp - 32) * (5 / 9)).toFixed(1); //converte para celsius
+                            temperature.innerHTML = celsius + "° C"; //escreve a temperatura no elemento temperatura
+                            location.innerHTML = //escreve o nome da cidade no elemento local
+                                //data.name + " (" + latitude + "°, " + longitude + "°)";
+                                data.name; //escreve o nome da cidade no elemento local
+
+                            description.innerHTML = data.weather[0].description; //escreve a descrição do clima no elemento descricao
+
+                            //Traducao da descricao
+
+                            if (desc.includes("cloud")) {
+                                description.innerHTML = "Nuvens";
+                            } else if (desc.includes("rain")) {
+                                description.innerHTML = "Chuva";
+                            } else if (desc.includes("clear")) {
+                                description.innerHTML = "Sol";
+                            } else if (desc.includes("snow")) {
+                                description.innerHTML = "Neve";
+                            } else if (desc.includes("mist")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("thunderstorm")) {
+                                description.innerHTML = "Trovoada";
+                            } else if (desc.includes("drizzle")) {
+                                description.innerHTML = "Garoa";
+                            } else if (desc.includes("tornado")) {
+                                description.innerHTML = "Tornado";
+                            } else if (desc.includes("haze")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("fog")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("smoke")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("dust")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("ash")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("squall")) {
+                                description.innerHTML = "Neblina";
+                            } else if (desc.includes("tornado")) {
+                                description.innerHTML = "Tornado";
+                            } else if (desc.includes("hurricane")) {
+                                description.innerHTML = "Trovoada";
+                            } else if (desc.includes("extreme")) {
+                                description.innerHTML = "Trovoada";
+                            } else if (desc.includes("cold")) {
+                                description.innerHTML = "Frio";
+                            } else if (desc.includes("hot")) {
+                                description.innerHTML = "Quente";
+                            } else if (desc.includes("overcast clouds")) {
+                                description.innerHTML = "Nuvens";
+                            }
+
+                            //Tempo
+                            let date = new Date(); //pega a data atual
+                            let hours = date.getHours(); //pega a hora atual
+                            let minutes = date.getMinutes(); //pega os minutos atual
+                            let seconds = date.getSeconds(); //pega os segundos atual
+                            let day = date.getDate(); //pega o dia atual
+                            let month = date.getMonth() + 1; //pega o mes atual
+                            let year = date.getFullYear(); //pega o ano atual
+
+
+                            let ampm = hours >= 12 ? "PM" : "AM"; //verifica se a hora é maior ou igual a 12
+
+
+                            hours = hours % 12; //pega a hora atual e divide por 12
+                            hours = hours ? hours : 12; //se a hora for 0, define a hora como 12
+
+
+                            minutes = minutes < 10 ? "0" + minutes : minutes; //se os minutos forem menor que 10, adiciona um 0 antes
+
+
+                            seconds = seconds < 10 ? "0" + seconds : seconds; //se os segundos forem menor que 10, adiciona um 0 antes
+
+
+                            let time = hours + ":" + minutes + ":" + seconds + " " + ampm; //monta a hora
+                            document.getElementById("time").innerHTML = time; //escreve a hora no elemento time
+
+                            let dateString = day + "/" + month + "/" + year; //monta a data
+                            document.getElementById("date").innerHTML = dateString; //escreve a data no elemento date
+
+
+
+
+                            //Icone
+
+                            let icon = data.weather[0].icon; //pega o icone do clima
+                            let icon_url = "http://openweathermap.org/img/w/" + icon + ".png"; //monta a url do icone
+
+
+                            document.getElementById("icone").innerHTML = //escreve o icone no elemento icone
+                                "<img src='" + icon_url + "'>"; //escreve o icone no elemento icone
+
+                            //Indice de qualidade do ar
+                            let indice = data.main.humidity; //pega o indice de qualidade do ar
+                            let indice_ar = document.getElementById("indice"); //pega o elemento indice
+                            indice_ar.innerHTML = indice + "%"; //escreve o indice de qualidade do ar no elemento indice
+                            //Descricao do indice de qualidade do ar
+                            let descricao_ar = document.getElementById("qualidade-descricao"); //pega o elemento descricao
+                            let titulo_ar = document.getElementById("qualidade-titulo"); //pega o elemento titulo
+
+
+
+
+
+                            if (indice >= 0 && indice <= 20) { //se o indice for maior ou igual a 0 e menor ou igual a 20
+                                descricao_ar.innerHTML = "Muito Baixa"; //escreve a descricao do indice de qualidade do ar no elemento descricao
+                            } else if (indice >= 21 && indice <= 40) { //se o indice for maior ou igual a 21 e menor ou igual a 40
+                                descricao_ar.innerHTML = "Baixa"; //escreve a descricao do indice de qualidade do ar no elemento descricao
+                            } else if (indice >= 41 && indice <= 60) { //se o indice for maior ou igual a 41 e menor ou igual a 60
+                                descricao_ar.innerHTML = "Normal"; //escreve a descricao do indice de qualidade do ar no elemento descricao
+                            } else if (indice >= 61 && indice <= 80) { //se o indice for maior ou igual a 61 e menor ou igual a 80
+                                descricao_ar.innerHTML = "Alta"; //escreve a descricao do indice de qualidade do ar no elemento descricao
+                            } else if (indice >= 81 && indice <= 100) { //se o indice for maior ou igual a 81 e menor ou igual a 100
+                                descricao_ar.innerHTML = "Muito Alta"; //escreve a descricao do indice de qualidade do ar no elemento descricao
+
+                            }
+
+
+
+
+                        });
+                }
+
+                function error() {
+                    location.innerHTML = "Não foi possivel achar sua localização";
+                } //se não conseguir pegar a localização
+            }
+
+            getWeather(); //chama a função getWeather
+        </script>
+
+    </main>
+    <footer>
+
+        <div class=" container ">
+            <div class="footer-text ">
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <p>Copyright © 2020 - Todos os direitos reservados</p>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <p>Política de privacidade | Redes sociais</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container ">
+            <div class="row ">
+                <div class="col-md-12 ">
+                    <div class="social-media ">
+                        <a href="# "><i class="fab fa-facebook-square ">Facebook</i></a>
+                        <a href="# "><i class="fab fa-instagram ">Instagram</i></a>
+                        <a href="# "><i class="fab fa-twitter-square ">Twitter</i></a>
+                        <a href="# "><i class="fab fa-youtube-square ">YouTube</i></a>
+                    </div>
+                </div>
+            </div>
+
+    </footer>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

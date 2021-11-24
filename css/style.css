@@ -1,0 +1,222 @@
+.container {
+    text-align: center;
+}
+
+main .container {
+    background-color: rgba(147, 147, 156, 0.1);
+    border-radius: 10px;
+    margin: 40px;
+    padding: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-us h1 {
+    margin: 45px;
+    margin-left: -1px;
+    font-size: 35px;
+}
+
+.about-us p {
+    margin: 20px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    margin-top: 40px;
+    background-color: grey;
+}
+
+.footer-text {
+    padding-top: 40px;
+}
+
+.social-media a {
+    color: white;
+    text-decoration: none;
+}
+
+.noticias {
+    margin-top: 20px;
+}
+
+.noticias h1 {
+    margin-bottom: 40px;
+}
+
+.report-page .container {
+    text-align: left;
+    background-color: rgba(209, 252, 255, 0.3);
+    margin: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    border-radius: 50px;
+    border: solid black 2px;
+}
+
+.cards-noticias-pagina {
+    margin-top: 40px;
+}
+
+.clima-pagina .container {
+    height: 400px;
+}
+
+.card-clima {
+    float: left;
+    height: 290px;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 10px 10px #888888;
+    background: linear-gradient(to bottom, #c281ff 0%, #09efff 100%);
+}
+
+.card-clima .clima-cidade {
+    margin-top: 35px;
+    margin-left: -580px;
+}
+
+.card-clima .clima-cidade h3 {
+    font-size: 20px;
+    color: white;
+}
+
+.card-clima .clima-cidade p {
+    font-size: 15px;
+    color: rgb(219, 219, 219);
+    margin-left: -1px;
+}
+
+.icone {
+    float: right;
+    width: 260px;
+    margin-top: -40px;
+    margin-left: -120px;
+}
+
+.icone img {
+    width: 45%;
+    color: white;
+}
+
+.max-min {
+    float: right;
+    margin-right: -80px;
+    margin-top: 90px;
+}
+
+.max-min p {
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.temperatura {
+    float: left;
+    margin-top: -10px;
+    margin-left: 35px;
+    text-align: left;
+}
+
+.temperatura h1 {
+    font-size: 80px;
+    color: white;
+}
+
+.temperatura p {
+    color: white;
+    width: 400px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.card-ar {
+    color: white;
+    float: right;
+    width: 28%;
+    background-color: rgb(161, 143, 175);
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 10px 10px #888888;
+}
+
+.card-ar .titulo h1 {
+    font-size: 20px;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    margin-left: 13px;
+}
+
+.indice {
+    margin-top: 0.1px;
+    border: rgb(0, 255, 55) 6px solid;
+    border-radius: 40px;
+    float: left;
+    margin-left: 20px;
+    height: 70px;
+    width: 70px;
+}
+
+.indice span {
+    font-size: 25px;
+    position: absolute;
+    margin-top: 8px;
+    margin-left: -23px;
+}
+
+#indice {}
+
+.qualidade-titulo {
+    display: block;
+    margin-top: 60px;
+    margin-right: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.qualidade-titulo h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.qualidade-descricao {
+    text-align: left;
+    margin-top: -30px;
+    margin-left: 170px;
+    font-weight: 900;
+    font-style: oblique;
+    color: rgb(255, 255, 255);
+    width: 180px;
+}
+
+.ver-mais {
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.ver-mais button {
+    background-color: rgb(0, 132, 255);
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.ver-mais button:hover {
+    background-color: rgb(33, 88, 241);
+}
+
+.mapa {
+    height: 100px;
+    margin-top: 400px;
+}
